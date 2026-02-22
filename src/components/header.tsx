@@ -1,8 +1,6 @@
 import { useState, useEffect } from "react";
-import { ListVideo, Moon, Sun } from "lucide-react";
-import { useTheme } from "next-themes";
+import { ListVideo } from "lucide-react";
 
-import { Switch } from "@/components/ui/switch";
 import { ModeSwitch } from "./mode-toggle";
 
 export const AppHeader = () => {

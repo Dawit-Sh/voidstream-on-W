@@ -1,13 +1,5 @@
 import { useState, useRef, useMemo } from "react";
-import {
-  Download,
-  Loader2,
-  Terminal,
-  Music,
-  Settings2,
-  ListVideo,
-  AlertTriangle,
-} from "lucide-react";
+import { Download, Loader2, Terminal, Music, Settings2 } from "lucide-react";
 import { Command, Child } from "@tauri-apps/plugin-shell";
 
 // Store Hooks
