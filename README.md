@@ -1,5 +1,7 @@
 # Voidstream
 
+Windows Port from the original project -> [henacodes/voidstream: A desktop yt-dlp client](https://github.com/henacodes/voidstream)
+
 A minimal `yt-dlp` desktop client built with Tauri v2 + React + Vite + TypeScript.
 
 ## Prereqs (Windows 11)
