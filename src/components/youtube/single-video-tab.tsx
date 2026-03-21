@@ -73,7 +73,7 @@ export const SingleVideoTab = () => {
     setIsFetching(true);
     setMetadata(null);
     try {
-      const cmd = Command.sidecar("binaries/yt-dlp", [
+      const cmd = Command.sidecar("yt-dlp", [
         "--print",
         "%(title)s\n%(uploader)s\n%(thumbnail)s\n%(duration_string)s\n%(view_count)s",
         "--no-playlist",
@@ -115,7 +115,7 @@ export const SingleVideoTab = () => {
       },
     });
 
-    const cmd = Command.sidecar("binaries/yt-dlp", args);
+    const cmd = Command.sidecar("yt-dlp", args);
 
     cmd.stdout.on("data", (line) => {
       if (line.includes("%")) setProgressLine(line);

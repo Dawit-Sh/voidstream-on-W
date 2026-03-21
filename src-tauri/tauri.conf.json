@@ -23,7 +23,7 @@
   },
   "bundle": {
     "externalBin": [
-      "binaries/yt-dlp"
+      "yt-dlp"
     ],
     "active": true,
     "targets": "all",

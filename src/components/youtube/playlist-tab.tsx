@@ -75,7 +75,7 @@ export const PlaylistTab = () => {
     setMeta(null);
 
     try {
-      const listCmd = Command.sidecar("binaries/yt-dlp", [
+      const listCmd = Command.sidecar("yt-dlp", [
         "--flat-playlist",
         "--print",
         "%(playlist_title)s\n%(uploader)s\n%(title)s\n%(duration_string)s\n%(thumbnails.-1.url)s",
@@ -137,7 +137,7 @@ export const PlaylistTab = () => {
       },
     });
 
-    const cmd = Command.sidecar("binaries/yt-dlp", args);
+    const cmd = Command.sidecar("yt-dlp", args);
 
     cmd.stdout.on("data", (line) => {
       if (line.includes("%")) setProgressLine(line);
