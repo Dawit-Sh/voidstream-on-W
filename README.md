@@ -19,11 +19,11 @@ A minimal `yt-dlp` desktop client built with Tauri v2 + React + Vite + TypeScrip
 
 This app runs `yt-dlp` as a Tauri *sidecar* via `Command.sidecar("yt-dlp", ...)`.
 
-Place the platform binary in `src-tauri/binaries/` using the target-triple naming convention:
+Place the platform binary directly in `src-tauri/` using the target-triple naming convention:
 
-- Windows: `src-tauri/binaries/yt-dlp-x86_64-pc-windows-msvc.exe`
-- Linux: `src-tauri/binaries/yt-dlp-x86_64-unknown-linux-gnu`
-- macOS (Apple Silicon): `src-tauri/binaries/yt-dlp-aarch64-apple-darwin`
+- Windows: `src-tauri/yt-dlp-x86_64-pc-windows-msvc.exe`
+- Linux: `src-tauri/yt-dlp-x86_64-unknown-linux-gnu`
+- macOS (Apple Silicon): `src-tauri/yt-dlp-aarch64-apple-darwin`
 
 ## Develop
 

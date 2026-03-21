@@ -37,9 +37,9 @@ if (Test-Path (Join-Path $env:USERPROFILE ".cargo\bin")) {
 
 Import-VsDevEnv | Out-Null
 
-$sidecarPath = Join-Path $repoRoot "src-tauri\\binaries\\yt-dlp-x86_64-pc-windows-msvc.exe"
+$sidecarPath = Join-Path $repoRoot "src-tauri\yt-dlp-x86_64-pc-windows-msvc.exe"
 if (-not (Test-Path $sidecarPath)) {
-  throw "Missing yt-dlp sidecar: $sidecarPath (run scripts\\setup-windows.ps1 first)"
+  throw "Missing yt-dlp sidecar: $sidecarPath (run scripts\setup-windows.ps1 first)"
 }
 
 npm ci
