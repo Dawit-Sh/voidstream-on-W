@@ -26,6 +26,7 @@ import { Switch } from "@/components/ui/switch";
 
 // Helpers
 import { parsePercent } from "@/lib/helpers";
+import { buildYtDlpDownloadArgs } from "@/lib/ytdlp";
 
 export const PlaylistTab = () => {
   // Global State from Zustand
@@ -121,35 +122,20 @@ export const PlaylistTab = () => {
       .map((i) => i + 1)
       .join(",");
 
-    let args = [
+    const args = buildYtDlpDownloadArgs({
       url,
-      "--playlist-items",
-      itemsStr,
-      "--newline",
-      "--windows-filenames",
-      "-o",
-      `${folder}/%(playlist_title)s/%(title)s.%(ext)s`,
-    ];
-
-    if (downloadCaptions) {
-      args.push("--write-subs");
-      if (autoCaptions) args.push("--write-auto-subs");
-      if (captionLanguages.trim()) args.push("--sub-langs", captionLanguages);
-      args.push("--sub-format", captionFormat);
-    }
-
-    if (isAudioOnly) {
-      args.push("-x", "--audio-format", "mp3");
-    } else {
-      // Logic: Prefer user-selected format/quality but allow merging
-      args.push(
-        "-f",
-        // Prefer a single-file (progressive) download first to avoid separate audio/video files.
-        // If unavailable, fall back to bestvideo+bestaudio (requires ffmpeg to merge).
-        `best[height<=${quality}][ext=${format}]/best[height<=${quality}]/best/bestvideo[height<=${quality}][ext=${format}]+bestaudio[ext=m4a]/bestvideo[height<=${quality}]+bestaudio/best`,
-      );
-      args.push("--merge-output-format", format);
-    }
+      outputTemplate: `${folder}/%(playlist_title)s/%(title)s.%(ext)s`,
+      quality,
+      format,
+      isAudioOnly,
+      playlistItems: itemsStr,
+      captions: {
+        enabled: downloadCaptions,
+        autoCaptions,
+        languages: captionLanguages,
+        format: captionFormat,
+      },
+    });
 
     const cmd = Command.sidecar("binaries/yt-dlp", args);
 
